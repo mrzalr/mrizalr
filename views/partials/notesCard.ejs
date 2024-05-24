@@ -1,0 +1,9 @@
+<a href="/notes/<%= note.ID %>" class="relative rounded-lg overflow-hidden group">
+  <img class="w-full h-52 sm:h-full object-cover group-hover:brightness-75 duration-150 rounded-lg" src="<%= note.ImageUrl %>" alt="<%= note.Title %>>" />
+  <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black"></div>
+  <div class="absolute inset-0 flex flex-col justify-end items-start p-3">
+    <h1 class="text-white font-medium text-xl sm:text-sm line-clamp-3">
+      <%= note.Title %>
+    </h1>
+  </div>
+</a>

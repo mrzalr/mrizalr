@@ -1,0 +1,52 @@
+<div id="wrapper" class="flex flex-col gap-4 pb-4">
+  <div class="flex justify-between items-center">
+    <h1 class="font-semibold text-xl">notes.</h1>
+    <div class="flex gap-4 items-center">
+      <a href="/dashboard/write/new" class="text-sm font-bold ">write</a>
+      <a href="/" class="text-sm font-bold bg-black/80 text-white px-3 py-1 rounded-full">logout</a>
+    </div>
+  </div>
+
+  <% if (typeof error !== 'undefined') { %>
+  <div class="bg-red-200 p-4 rounded-lg border-[1px] border-red-400">
+    <p class="text-sm font-medium"><%= error %></p>
+  </div>
+  <% } else if(notes.length === 0) { %>
+  <p class="text-black/80 italic text-sm">There is no notes for now.</p>
+  <% } else { %>
+  <div class="grid gap-2 sm:grid-cols-3 sm:auto-rows-[14rem]">
+    <% notes.forEach(note => { %>
+    <%- include('../../partials/dashboardNotesCard', {note}) %>
+    <% }) %>
+  </div>
+
+  <div class="w-full flex justify-center">
+    <div class="flex gap-4">
+      <a href="<%= typeof prevHref === 'undefined' ? '#':prevHref %>" class="select-none rounded-full px-4 py-2 border-2 border-black text-sm font-bold <% if (typeof prevHref === 'undefined') { %>
+        pointer-events-none cursor-default opacity-30
+      <% } %>">
+        <i class="bx bx-left-arrow-alt"></i> Previous
+      </a>
+      <a href="<%= typeof nextHref === 'undefined' ? '#':nextHref %>" class="select-none rounded-full px-4 py-2 border-2 border-black text-sm font-bold <% if (typeof nextHref === 'undefined') { %>
+        pointer-events-none cursor-default opacity-30
+      <% } %>">
+        Next <i class="bx bx-right-arrow-alt"></i>
+      </a>
+    </div>
+  </div>
+  <% } %>
+
+  <!-- Delete Modal -->
+  <div id="delete-modal" class="fixed inset-0 bg-black/10 backdrop-blur-sm flex items-center justify-center opacity-0 pointer-events-none duration-200">
+    <div class="bg-white p-4 rounded-lg w-64 sm:w-96">
+      <p class="font-light">Do you really want to delete <span id="note-title" class="italic font-normal">Lorem ipsum dolor sit, amet consectetur adipisicing elit.</span> ?</p>
+      <div class="pt-4 flex items-center justify-center gap-2">
+        <button id="cancel-del" class="px-4 py-1 font-semibold rounded-full border-2 border-black/80">No</button>
+        <button id="confirm-del" class="px-4 py-1 font-semibold rounded-full border-2 border-black/80 bg-black/80 text-white flex items-center gap-2">
+          <div id="loading" class="w-4 h-4 border-2 hidden border-white rounded-full border-t-gray-500 animate-spin"></div> Yes
+        </button>
+      </div>
+    </div>
+  </div>
+
+</div>

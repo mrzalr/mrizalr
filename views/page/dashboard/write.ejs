@@ -1,0 +1,39 @@
+<div id="wrapper" class="flex flex-col gap-4 pb-4">
+  <div class="flex items-center justify-between">
+    <a class="text-xl font-semibold flex items-center gap-1" href="/dashboard">
+      <i class='bx bx-left-arrow-alt'></i>
+      <span class="text-sm">back</span>
+    </a>
+    <button id="save-btn" class="bg-black/80 px-3 py-1 text-white text-sm font-semibold rounded-full flex items-center gap-2 <%= typeof error !== 'undefined' ? 'opacity-70':'opacity-100' %>" <%= typeof error !== 'undefined' ? 'disabled':'' %>>
+      <div id="loading" class="w-4 h-4 border-2 border-white rounded-full border-t-gray-500 animate-spin hidden"></div>save
+    </button>
+  </div>
+
+  <% if (typeof error !== 'undefined') { %>
+  <div class="bg-red-200 p-4 rounded-lg border-[1px] border-red-400">
+    <p class="text-sm font-medium"><%= error %></p>
+  </div>
+  <% } else { %>
+  <form id="write-form" class="flex flex-col sm:px-4 gap-3 pt-4" data-note-id="<%= note.ID %>">
+    <input name="Title" id="title" class="w-full text-2xl outline-none" type="text" value="<%= note.Title %>">
+    <div class="flex gap-2 items-center">
+      <i class='bx bx-images text-xl'></i>
+      <input name="ImageUrl" id="imageUrl" class="w-full outline-none" type="text" placeholder="Notes banner url" value="<%= note.ImageUrl %>">
+    </div>
+    <div class="flex items-center gap-1">
+      <div class=" flex items-center justify-center w-4 h-4 rounded-[0.2rem] border-[1px] border-black/60">
+        <input class="appearance-none w-3 h-3 rounded-[0.2rem] checked:bg-black/50" name="Published" type="checkbox" id="published-cbx" value="<%= note.Published %>" <%= note.Published ? 'checked' : '' %>>
+      </div>
+      <label for="published-cbx" class="select-none">Published</label>
+    </div>
+    <div class="flex items-center">
+      <button id="edit-btn" class="p-[.3rem]">Edit</button>
+      <button id="preview-btn" class="p-[.3rem] text-black/60">Preview</button>
+    </div>
+    <div id="contentWrapper" class="w-full h-[22rem]">
+      <textarea name="Content" id="content" placeholder="Write notes here" class="resize-none border-2 p-2 font-light h-full w-full rounded-lg"><%= note.Content %></textarea>
+    </div>
+  </form>
+  <%}%>
+
+</div>
