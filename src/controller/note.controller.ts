@@ -13,6 +13,7 @@ export async function handleNoteView(req: Request, res: Response) {
 
   const viewData: any = {
     body: "page/notes",
+    pageTitle: "notes | mrizalr.",
     navbarData,
   };
 
@@ -56,9 +57,9 @@ export async function handleArticleView(req: Request, res: Response) {
   const { id } = req.params;
 
   const navbarData: navbarData = {
-    title: "notes.",
-    menu: "about",
-    menuLink: "/about",
+    title: "mrizalr.",
+    menu: "notes",
+    menuLink: "/notes",
   };
 
   const viewData: any = {
@@ -76,6 +77,7 @@ export async function handleArticleView(req: Request, res: Response) {
 
     note.Content = homeService.parseNoteContent(note.Content);
     viewData.note = note;
+    viewData.pageTitle = `${note.Title} | mrizalr.`;
   } catch (error) {
     viewData.error = (error as Error).message;
     res.render("base", viewData);

@@ -45,10 +45,12 @@ export async function handleAboutView(req: Request, res: Response) {
   const navbarData: navbarData = {
     menu: "notes",
     menuLink: "/notes",
+    title: "about",
   };
 
   const viewData: any = {
     body: "page/about",
+    pageTitle: "about | mrizalr.",
     navbarData,
     educations,
     experiences,
