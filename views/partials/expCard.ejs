@@ -1,0 +1,14 @@
+<div class="relative rounded-lg overflow-hidden">
+  <img class="h-44 object-cover w-full sm:h-56" src="<%= exp.image %>" alt="education image" />
+  <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black"></div>
+  <div class="absolute inset-4 text-white flex flex-col justify-end">
+    <h1 class="font-semibold text-xl mb-3"><%= exp.title %></h1>
+    <div class="flex justify-between">
+      <div>
+        <h4 class="text-sm"><%= exp.instance %></h4>
+        <h4 class="text-sm"><%= exp.year %></h4>
+      </div>
+      <a target="_blank" href="<%= exp.url %>" class="w-20 h-8 flex items-center justify-center rounded-full border-2 border-white text-sm font-bold">visit<i class="bx bx-up-arrow-alt rotate-45"></i></a>
+    </div>
+  </div>
+</div>

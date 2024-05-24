@@ -1,0 +1,18 @@
+<div class="relative rounded-lg overflow-hidden">
+  <img class="w-full h-52 sm:h-full object-cover rounded-lg" src="<%= note.ImageUrl || 'https://placehold.co/600x400?text=No+Image' %>" alt="Notes banner" />
+  <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black"></div>
+  <% if (!note.Published) { %>
+  <div class="absolute top-1 right-1 bg-white px-3 py-1 rounded-full">
+    <p class="text-black font-semibold text-xs">draft</p>
+  </div>
+  <% } %>
+  <div class="absolute inset-0 flex flex-col justify-end items-start p-3">
+    <h1 class="text-white font-medium text-xl sm:text-sm line-clamp-3">
+      <%= note.Title %>
+    </h1>
+    <div class="flex gap-2 pt-2">
+      <a href="<%= `/dashboard/write/${note.ID}` %>" class="px-3 py-1 text-white font-semibold text-xs border-2 border-white rounded-full hover:brightness-75 duration-150">edit</a>
+      <button id="del-btn" data-note-id="<%= note.ID %>" data-note-title="<%= note.Title %>" class="px-3 py-1 text-white font-semibold text-xs border-2 border-white rounded-full hover:brightness-75 duration-150">delete</button>
+    </div>
+  </div>
+</div>

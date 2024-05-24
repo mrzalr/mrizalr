@@ -1,0 +1,48 @@
+<%- include('../partials/navbar') %>
+
+<div class="mt-4 flex flex-col gap-8 py-16">
+
+  <div class="flex flex-col items-center gap-12">
+    <div class="h-64 w-full sm:w-[500px] flex flex-col gap-4 justify-center items-center">
+      <img class="w-32 h-32 rounded-full" src="/img/profile-picture.jpg" alt="profile picture" />
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, neque
+        itaque, voluptatum blanditiis quaerat perferendis doloremque numquam
+        rerum quasi magni in vel? Qui, magni!
+      </p>
+      <div class="flex gap-3">
+        <a target="_blank" href="https://instagram.com/m_rijalr"><i class="bx bxl-instagram-alt text-2xl text-black/80"></i></a>
+        <a target="_blank" href="https://twitter.com/mrizalr_"><i class="bx bxl-twitter text-2xl text-black/80"></i></a>
+        <a target="_blank" href="https://linkedin.com/in/mrizalr"><i class="bx bxl-linkedin-square text-2xl text-black/80"></i></a>
+        <a target="_blank" href="https://github.com/mrzalr"><i class="bx bxl-github text-2xl text-black/80"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex flex-col gap-3 w-full">
+    <h1 class="font-bold text-lg">Educations</h1>
+    <div class="grid grid-cols-1 gap-2 sm:grid-cols-2">
+      <% educations.forEach(education => { %>
+      <%- include('../partials/expCard', {exp: education}) %>
+      <% }) %>
+    </div>
+  </div>
+
+  <div class="flex flex-col gap-3 w-full">
+    <h1 class="font-bold text-lg">Experiences</h1>
+    <div class="grid grid-cols-1 gap-2 sm:grid-cols-2">
+      <% experiences.forEach(exp => { %>
+      <%- include('../partials/expCard', {exp}) %>
+      <% }) %>
+    </div>
+  </div>
+
+  <div class="flex flex-col gap-3 w-full">
+    <h1 class="font-semibold text-lg">Projects</h1>
+    <p class="text-black/80 italic text-sm">There is no projects for now.</p>
+  </div>
+
+
+</div>
+
+<%- include('../partials/footer') %>
