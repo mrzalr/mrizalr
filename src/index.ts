@@ -6,8 +6,6 @@ import cookieParser from "cookie-parser";
 
 try {
   (async function () {
-    dotenv.config();
-
     await prisma.$connect();
 
     const app = express();
