@@ -179,8 +179,8 @@ function buildImage(content: String) {
   const contents = content.split("|");
 
   return `
-        <div class="flex items-center flex-col gap-2 m-4">
-            <img class="w-full object-cover rounded-lg" src="${contents[0]}" alt="${contents[2]}">
+        <div class="flex items-center flex-col gap-2">
+            <img class="w-full max-w-[500px] object-cover rounded-lg" src="${contents[0]}" alt="${contents[2]}">
             <span class="text-center text-black/60 text-sm font-medium">${contents[1]}</span>
         </div>`;
 }
@@ -189,7 +189,7 @@ function buildLink(content: String) {
   const contents = content.split("|");
 
   return `
-        <a href="${contents[2]}" target="_blank" class="flex flex-col sm:flex-row sm:w-[30rem] gap-3 m-4 sm:mx-auto p-2 border-[1px] border-black/20 rounded-lg">
+        <a href="${contents[2]}" target="_blank" class="flex flex-col sm:flex-row max-w-[500px] w-full gap-3 sm:mx-auto p-2 border-[1px] border-black/20 rounded-lg">
             <img class="w-full sm:w-32 h-32 object-cover rounded-lg" src="${contents[0]}" alt="${contents[1]}">
             <div class="flex flex-col gap-1 sm:pt-3">
                 <h1 class="text-xl font-medium">${contents[3]}</h1>

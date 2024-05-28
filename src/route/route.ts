@@ -6,6 +6,7 @@ import * as loginController from "../controller/dashboard/login.controller";
 import * as dashboardController from "../controller/dashboard/dashboard.controller";
 import * as writeController from "../controller/dashboard/write.controller";
 import { auth } from "../middleware/auth";
+import { NotFoundController } from "../controller/404.controller";
 
 export const registerRoutes = (app: Express) => {
   app.get("/", homeController.handleHomeView);
@@ -21,4 +22,6 @@ export const registerRoutes = (app: Express) => {
   app.post("/dashboard/write/parse", auth, writeController.parseNoteContent);
   app.get("/dashboard/write/:id", auth, writeController.handleWriteView);
   app.post("/dashboard/write/:id", auth, writeController.saveNote);
+
+  app.use(NotFoundController);
 };
